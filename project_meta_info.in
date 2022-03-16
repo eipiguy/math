@@ -1,0 +1,9 @@
+# project_meta_info.in
+
+set( project_version 0.0.1 )
+
+set( project_description
+    "A basic math library with vectors and matrix functionality"
+)
+
+set( project_homepage "" )
