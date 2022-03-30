@@ -1,0 +1,59 @@
+\hypertarget{vector_8hxx_source}{}\doxysection{vector.\+hxx}
+\label{vector_8hxx_source}\index{D:/Dropbox/projects/code/math/headers/vector.hxx@{D:/Dropbox/projects/code/math/headers/vector.hxx}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <initializer\_list>}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{4 \textcolor{comment}{// Vector}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{// Generic Vector}}
+\DoxyCodeLine{7 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keywordtype}{int} n>}
+\DoxyCodeLine{8 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vector}{Vector}} \{}
+\DoxyCodeLine{9     T data[n];}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{comment}{// Constructors}}
+\DoxyCodeLine{12     \textcolor{keyword}{explicit} \mbox{\hyperlink{struct_vector}{Vector<T, n>}} (T fill);}
+\DoxyCodeLine{13     \mbox{\hyperlink{struct_vector}{Vector<T, n>}} (std::initializer\_list<T> list);}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{comment}{// Component-\/Wise Operations}}
+\DoxyCodeLine{16     \mbox{\hyperlink{struct_vector}{Vector<T,n>}} operator+ (\mbox{\hyperlink{struct_vector}{Vector<T,n>}} right);}
+\DoxyCodeLine{17     \mbox{\hyperlink{struct_vector}{Vector<T,n>}} operator-\/ (\mbox{\hyperlink{struct_vector}{Vector<T,n>}} right);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{comment}{// Vector Specific Operations}}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} normalize();}
+\DoxyCodeLine{21 \};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{//=============================================================================}}
+\DoxyCodeLine{24 \textcolor{comment}{// Specializations for 2, 3, and 4 Dimensions}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{27 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vector}{Vector}}<T, 2> \{}
+\DoxyCodeLine{28     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{29         T data[2];}
+\DoxyCodeLine{30         \textcolor{keyword}{struct }\{ T x, y; \};}
+\DoxyCodeLine{31     \};}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{35 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vector}{Vector}}<T, 3> \{}
+\DoxyCodeLine{36     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{37         T data[3];}
+\DoxyCodeLine{38         \textcolor{keyword}{struct }\{ T x, y, z; \};}
+\DoxyCodeLine{39         \textcolor{keyword}{struct }\{ T r, g, b; \};}
+\DoxyCodeLine{40         \mbox{\hyperlink{struct_vector_3_01_t_00_012_01_4}{Vector<T, 2>}} xy;}
+\DoxyCodeLine{41     \};}
+\DoxyCodeLine{42 \};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{45 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vector}{Vector}}<T, 4> \{}
+\DoxyCodeLine{46     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{47         T data[4];}
+\DoxyCodeLine{48         \textcolor{keyword}{struct }\{ T x, y, z, w; \};}
+\DoxyCodeLine{49         \textcolor{keyword}{struct }\{ T r, g, b, a; \};}
+\DoxyCodeLine{50         \mbox{\hyperlink{struct_vector_3_01_t_00_012_01_4}{Vector<T, 2>}} xy;}
+\DoxyCodeLine{51         \mbox{\hyperlink{struct_vector_3_01_t_00_013_01_4}{Vector<T, 3>}} xyz;}
+\DoxyCodeLine{52         \mbox{\hyperlink{struct_vector_3_01_t_00_013_01_4}{Vector<T, 3>}} rgb;}
+\DoxyCodeLine{53     \};}
+\DoxyCodeLine{54 \};}
+
+\end{DoxyCode}

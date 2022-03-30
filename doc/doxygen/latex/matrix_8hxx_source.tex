@@ -1,0 +1,16 @@
+\hypertarget{matrix_8hxx_source}{}\doxysection{matrix.\+hxx}
+\label{matrix_8hxx_source}\index{D:/Dropbox/projects/code/math/headers/matrix.hxx@{D:/Dropbox/projects/code/math/headers/matrix.hxx}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{// Matrix}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// Generic Matrix}}
+\DoxyCodeLine{5 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keywordtype}{int} rows, \textcolor{keywordtype}{int} cols>}
+\DoxyCodeLine{6 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_matrix}{Matrix}}\{ T data[rows][cols]; \};}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// Square Specialization}}
+\DoxyCodeLine{9 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keywordtype}{int} n>}
+\DoxyCodeLine{10 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_matrix}{Matrix}}<T, n, n>\{ T data[n][n]; \};}
+
+\end{DoxyCode}
