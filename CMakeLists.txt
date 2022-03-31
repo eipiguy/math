@@ -1,25 +1,23 @@
 # ./CMakeLists.txt
 cmake_minimum_required( VERSION 3.15 )
 
-function( print_meta_info )
-    message( "" )
-    message( "project_version =     ${project_version}" )
-    message( "project_description = ${project_description}" )
-    message( "project_homepage =    ${project_homepage}" )
-    message( "project_languages =   ${project_languages}" )
-    message( "" )
-endfunction()
-
-# set up loading of meta information
-set(    CMAKE_PROJECT_INCLUDE_BEFORE
-        "${CMAKE_CURRENT_LIST_DIR}/common_project_include.in"
-)
+# load meta information
+include( "${CMAKE_CURRENT_SOURCE_DIR}/project_meta_info.in" )
 project( nmath
     VERSION         ${project_version}
     DESCRIPTION     ${project_description}
     HOMEPAGE_URL    ${project_homepage}
     LANGUAGES       ${project_languages}
 )
+
+function( print_meta_info )
+    message( "" )
+    message( "project_version:      ${project_version}" )
+    message( "project_description:  ${project_description}" )
+    message( "project_homepage:     ${project_homepage}" )
+    message( "project_languages:    ${project_languages}" )
+    message( "" )
+endfunction()
 print_meta_info()
 
 # set default binary symbol visibilities to hidden

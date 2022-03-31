@@ -1,6 +1,0 @@
-# project_meta_info.in
-
-set( project_version        1.0.0 )
-set( project_description    "A set of modern C++ math, geometry, and simulation libraries" )
-set( project_homepage       "https://github.com/eipiguy/nmath" )
-set( project_languages      CXX )

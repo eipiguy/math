@@ -1,3 +1,4 @@
+#include "nlinear_export.h"
 #include <initializer_list>
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5,7 +6,7 @@
 
 // Generic Vector
 template <typename T, int n>
-struct Vector {
+struct NLINEAR_EXPORT Vector {
     T data[n];
 
     // Constructors
@@ -25,16 +26,16 @@ struct Vector {
 // Vector-Based Functions
 
 template <typename T, int n>
-T dot(const Vector<T, n> left, const Vector<T, n> right);
+NLINEAR_EXPORT T dot(const Vector<T, n> left, const Vector<T, n> right);
 
 template <typename T, int n>
-Vector<T, n> cross(const Vector<T, n> left, const Vector<T, n> right);
+NLINEAR_EXPORT Vector<T, n> cross(const Vector<T, n> left, const Vector<T, n> right);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Specializations for 2, 3, and 4 Dimensions
 
 template <typename T>
-struct Vector<T, 2> {
+struct NLINEAR_EXPORT Vector<T, 2> {
     union {
         T data[2];
         struct { T x, y; };
@@ -42,7 +43,7 @@ struct Vector<T, 2> {
 };
 
 template <typename T>
-struct Vector<T, 3> {
+struct NLINEAR_EXPORT Vector<T, 3> {
     union {
         T data[3];
         struct { T x, y, z; };
@@ -52,7 +53,7 @@ struct Vector<T, 3> {
 };
 
 template <typename T>
-struct Vector<T, 4> {
+struct NLINEAR_EXPORT Vector<T, 4> {
     union {
         T data[4];
         struct { T x, y, z, w; };

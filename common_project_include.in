@@ -1,2 +1,0 @@
-# ./common_project_include.in
-include( "${CMAKE_CURRENT_SOURCE_DIR}/project_meta_info.in" )
