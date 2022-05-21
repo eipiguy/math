@@ -275,7 +275,7 @@ T Vector<T,n> :: product(){
 }
 
 template <typename T, size_t n>
-size_t Vector<T,n> :: min(size_t *minID){
+T Vector<T,n> :: min(size_t *minID){
     if(minID){
         *minID = 0;
     }
@@ -333,12 +333,153 @@ bool Vector<T,n> :: any(){
 //=============================================================================
 // Scalar Operators from Left
 
+template <typename T, size_t n>
+Vector<T,n> operator+ (const T &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = left + right[i];
+    }
+    return out;
+}
+
+template <typename T, size_t n>
+Vector<T,n> operator- (const T &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = left - right[i];
+    }
+    return out;
+}
+
+template <typename T, size_t n>
+Vector<T,n> operator* (const T &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = left * right[i];
+    }
+    return out;
+}
+
+template <typename T, size_t n>
+Vector<T,n> operator/ (const T &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = left / right[i];
+    }
+    return out;
+}
+
+template <typename T, size_t n>
+Vector<T,n> operator% (const T &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = left % right[i];
+    }
+    return out;
+}
+
 //=============================================================================
 //Component-Wise Non-Operators
 
-//-----------------------------------------------------------------------------
+template <typename T, size_t n>
+Vector<T,n> min(const Vector<T,n> &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = std::min(left[i], right[i]);
+    }
+    return out;
+}
+
+template <typename T, size_t n>
+Vector<T,n> min(const T &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = std::min(left, right[i]);
+    }
+    return out;
+}
+
+template <typename T, size_t n>
+Vector<T,n> min(const Vector<T,n> &left, const T &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = std::min(left[i], right);
+    }
+    return out;
+}
 
 //-----------------------------------------------------------------------------
 
+template <typename T, size_t n>
+Vector<T,n> max(const Vector<T,n> &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = std::max(left[i], right[i]);
+    }
+    return out;
+}
+
+template <typename T, size_t n>
+Vector<T,n> max(const T &left, const Vector<T,n> &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = std::max(left, right[i]);
+    }
+    return out;
+}
+
+template <typename T, size_t n>
+Vector<T,n> max(const Vector<T,n> &left, const T &right){
+    Vector<T,n> out;
+    for( size_t i=0; i<n; ++i ){
+        out[i] = std::max(left[i], right);
+    }
+    return out;
+}
+
+//-----------------------------------------------------------------------------
+/*
+template <typename T, size_t n>
+Vector<T,n> clamp(const Vector<T,n> &v, const Vector<T,n> &min, const Vector<T,n> &max);
+
+template <typename T, size_t n>
+Vector<T,n> clamp(const Vector<T,n> &v, const T &min, const Vector<T,n> &max);
+
+template <typename T, size_t n>
+Vector<T,n> clamp(const Vector<T,n> &v, const Vector<T,n> &min, const T &max);
+
+template <typename T, size_t n>
+Vector<T,n> clamp(const Vector<T,n> &v, const T &min, const T &max);
+*/
 //=============================================================================
 // Vector-Based Free Functions
+
+template <typename T, size_t n>
+T dot (const Vector<T,n> &left, const Vector<T,n> &right){
+    T sum = 0;
+    for( size_t i=0; i<n; ++i ){
+        sum += left[i]*right[i];
+    }
+    return sum;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Specializations for 2, 3, and 4 Dimensions
+
+//=============================================================================
+// 2 Dimensions
+
+//=============================================================================
+// 3 Dimensions
+
+template <typename T>
+Vector<T,3> cross (const Vector<T,3> left, const Vector<T,3> right){
+    Vector<T,3> out;
+    out.x = (left.y * right.z) - (left.z * right.y);
+    out.x = (left.z * right.x) - (left.x * right.z);
+    out.x = (left.x * right.y) - (left.y * right.x);
+    return out;
+}
+
+//=============================================================================
+// 4 Dimensions

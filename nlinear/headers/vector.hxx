@@ -67,65 +67,68 @@ struct NLINEAR_EXPORT Vector {
 // Scalar Operators from Left
 
 template <typename T, size_t n>
-Vector<T,n> operator+ (const T &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> operator+ (const T &left, const Vector<T,n> &right);
 
 template <typename T, size_t n>
-Vector<T,n> operator- (const T &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> operator- (const T &left, const Vector<T,n> &right);
 
 template <typename T, size_t n>
-Vector<T,n> operator* (const T &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> operator* (const T &left, const Vector<T,n> &right);
 
 template <typename T, size_t n>
-Vector<T,n> operator/ (const T &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> operator/ (const T &left, const Vector<T,n> &right);
 
 template <typename T, size_t n>
-Vector<T,n> operator% (const T &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> operator% (const T &left, const Vector<T,n> &right);
 
 //=============================================================================
 //Component-Wise Non-Operators
 
 template <typename T, size_t n>
-Vector<T,n> min(const Vector<T,n> &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> min(const Vector<T,n> &left, const Vector<T,n> &right);
 
 template <typename T, size_t n>
-Vector<T,n> min(const T &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> min(const T &left, const Vector<T,n> &right);
 
 template <typename T, size_t n>
-Vector<T,n> min(const Vector<T,n> &left, const T &right);
+NLINEAR_EXPORT Vector<T,n> min(const Vector<T,n> &left, const T &right);
 
 //-----------------------------------------------------------------------------
 
 template <typename T, size_t n>
-Vector<T,n> max(const Vector<T,n> &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> max(const Vector<T,n> &left, const Vector<T,n> &right);
 
 template <typename T, size_t n>
-Vector<T,n> max(const T &left, const Vector<T,n> &right);
+NLINEAR_EXPORT Vector<T,n> max(const T &left, const Vector<T,n> &right);
 
 template <typename T, size_t n>
-Vector<T,n> max(const Vector<T,n> &left, const T &right);
+NLINEAR_EXPORT Vector<T,n> max(const Vector<T,n> &left, const T &right);
 
 //-----------------------------------------------------------------------------
 
 template <typename T, size_t n>
-Vector<T,n> clamp(const Vector<T,n> &v, const Vector<T,n> &min, const Vector<T,n> &max);
+NLINEAR_EXPORT Vector<T,n> clamp(const Vector<T,n> &v, const Vector<T,n> &min, const Vector<T,n> &max);
 
 template <typename T, size_t n>
-Vector<T,n> clamp(const Vector<T,n> &v, const T &min, const Vector<T,n> &max);
+NLINEAR_EXPORT Vector<T,n> clamp(const Vector<T,n> &v, const T &min, const Vector<T,n> &max);
 
 template <typename T, size_t n>
-Vector<T,n> clamp(const Vector<T,n> &v, const Vector<T,n> &min, const T &max);
+NLINEAR_EXPORT Vector<T,n> clamp(const Vector<T,n> &v, const Vector<T,n> &min, const T &max);
 
 template <typename T, size_t n>
-Vector<T,n> clamp(const Vector<T,n> &v, const T &min, const T &max);
+NLINEAR_EXPORT Vector<T,n> clamp(const Vector<T,n> &v, const T &min, const T &max);
 
 //=============================================================================
 // Vector-Based Free Functions
 
 template <typename T, size_t n>
-NLINEAR_EXPORT T dot (const Vector<T,n> &left, const Vector<T,n> &right);
+NLINEAR_EXPORT T dot(const Vector<T,n> &left, const Vector<T,n> &right);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Specializations for 2, 3, and 4 Dimensions
+
+//=============================================================================
+// 2 Dimensions
 
 template <typename T>
 struct NLINEAR_EXPORT Vector<T,2> {
@@ -134,6 +137,9 @@ struct NLINEAR_EXPORT Vector<T,2> {
         struct { T x, y; };
     };
 };
+
+//=============================================================================
+// 3 Dimensions
 
 template <typename T>
 struct NLINEAR_EXPORT Vector<T,3> {
@@ -148,6 +154,9 @@ struct NLINEAR_EXPORT Vector<T,3> {
 template <typename T>
 NLINEAR_EXPORT Vector<T,3> cross (const Vector<T,3> left, const Vector<T,3> right);
 
+//=============================================================================
+// 4 Dimensions
+
 template <typename T>
 struct NLINEAR_EXPORT Vector<T,4> {
     union {
@@ -159,14 +168,3 @@ struct NLINEAR_EXPORT Vector<T,4> {
         Vector<T,3> rgb;
     };
 };
-
-///////////////////////////////////////////////////////////////////////////////
-// Typedefs for Ease of Use
-
-typedef Vector<float,2> float2;
-typedef Vector<float,3> float3;
-typedef Vector<float,4> float4;
-
-typedef Vector<double,2> double2;
-typedef Vector<double,3> double3;
-typedef Vector<double,4> double4;
